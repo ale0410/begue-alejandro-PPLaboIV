@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "begue-alejandro-pplaboiv"
+  },
+  "targets": {
+    "begue-alejandro-pplaboiv": {
+      "hosting": {
+        "begue-alejandro-PPLaboIV": [
+          "begue-alejandro-pplaboiv"
+        ]
+      }
+    }
+  }
+}
