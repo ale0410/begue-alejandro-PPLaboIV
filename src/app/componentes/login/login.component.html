@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="py-5 text-center">
+      <img class="d-block mx-auto mb-4" src="../../../assets/HarryPotter.jpg" alt="" width="100" height="100">
+      <h2>Login</h2>
+      <!-- <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p> -->
+    </div>
+  
+    <div class="row">
+  
+      <div class="col-md-8 order-md-1">
+        <h4 class="mb-3">Nuevo usuario</h4>
+        <form class="needs-validation" [formGroup]="formGroup" (submit)="altaUsuario()" novalidate>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="nombre">Usuario</label>
+              <input type="text" class="form-control" id="usuario" placeholder="" value="" formControlName="usuario" required>
+              <small  *ngIf="formGroup.controls.usuario.errors?.required && formGroup.controls.usuario.touched">El usuario es requerido</small>
+              <small  *ngIf="formGroup.controls.usuario.errors?.containsSpaces">El usuario no puede tener espacios</small>
+            </div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="alias">Contraseña</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">@</span>
+              </div>
+              <input type="text" class="form-control" id="contraseña" placeholder="Password" formControlName="contraseña"  required>
+            </div>
+            <small  *ngIf="formGroup.controls.contraseña.errors?.required && formGroup.controls.contraseña.touched">La contraseña es requerida</small>
+            <small  *ngIf="formGroup.controls.contraseña.errors?.minLength && formGroup.controls.contraseña.touched">La contraseña no puede tener menos de 4 caracteres</small>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="sexo">Género</label>
+              <select class="custom-select d-block w-100" id="sexo" formControlName="sexo" required>
+                <option value="">Elegir...</option>
+                <option value="femenino">Femenino</option>
+                <option value="masculino">Masculino</option>
+                <option value="otro">Otro</option>
+              </select>
+              <small  *ngIf="formGroup.controls.sexo.errors?.required && formGroup.controls.sexo.touched">El género es requerido</small>
+            </div>
+            
+            <div class="col-md-6 mb-3">
+              <label for="edad">Edad</label>
+              <input type="number" class="form-control" id="edad" placeholder="30" formControlName="edad">
+              <small  *ngIf="formGroup.controls.edad.errors?.required && formGroup.controls.edad.touched">La edad es requerido</small>
+              <small  *ngIf="formGroup.controls.edad.errors?.min && formGroup.controls.edad.touched">La edad debe ser mayor a 12</small>
+              <small  *ngIf="formGroup.controls.edad.errors?.max && formGroup.controls.edad.touched">La edad debe ser menor a 99</small>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-9 mb-3">
+              <label for="nacionalidad">Nacionalidad</label>
+              <input type="text" class="form-control" id="nacionalidad" placeholder="Ingrese una nacionalidad" formControlName="nacionalidad"  required readonly>
+              <small  *ngIf="formGroup.controls.nacionalidad.errors?.required &&  formGroup.controls.nacionalidad.touched">La nacionalidad es obligatoria</small>
+            </div>
+  
+            <div class="col-md-3 mb-3">
+              <img *ngIf="bandera" [src]="bandera" alt="">
+            </div>
+  
+          </div>
+  
+          <hr class="mb-4">
+          <button class="btn btn-primary btn-lg btn-block" type="submit" [disabled]="formGroup.invalid" >ALTA</button>
+        </form>
+      </div>
+    </div>
+  
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2017-2020 Company Name</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Privacy</a></li>
+        <li class="list-inline-item"><a href="#">Terms</a></li>
+        <li class="list-inline-item"><a href="#">Support</a></li>
+      </ul>
+    </footer>
+  </div>
