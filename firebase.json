@@ -1,6 +1,7 @@
 {
   "hosting": [
     {
+      "target": "begue-alejandro-PPLaboIV",
       "public": "public",
       "ignore": [
         "firebase.json",
