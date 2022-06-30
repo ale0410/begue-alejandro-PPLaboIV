@@ -1,0 +1,75 @@
+<div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="../../../assets/repartidor-pizzas.jpg" alt="" width="72" height="57">
+        <h2>Alta Usuarios</h2>
+        <!-- <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p> -->
+      </div>
+
+      <div class="row g-5">
+
+        <div class="col-md-7 col-lg-8">
+          <h4 class="mb-3">Ingreso del usuario</h4>
+          <form class="needs-validation" [formGroup]="registerGroup" (submit)="altaRepartidor()" novalidate>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label for="dni" class="form-label">DNI</label>
+                <input type="number" class="form-control" id="dni" placeholder="" formControlName="dni">
+                <small  *ngIf="registerGroup.controls.dni.errors?.required && registerGroup.controls.dni.touched">El DNI es requerido</small>
+                <small  *ngIf="registerGroup.controls.dni.errors?.max && registerGroup.controls.dni.touched">El DNI no puede ser mayor a 50 millones.</small>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" placeholder="" formControlName="nombre">
+                <small  *ngIf="registerGroup.controls.nombre.errors?.required && registerGroup.controls.nombre.touched">El nombre es requerido</small>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="edad" class="form-label">Edad</label>
+                <input type="number" class="form-control" id="edad" placeholder="" formControlName="edad">
+                <small  *ngIf="registerGroup.controls.edad.errors?.required && registerGroup.controls.edad.touched">La edad es requerida</small>
+                <small  *ngIf="registerGroup.controls.edad.errors?.min && registerGroup.controls.edad.touched">Tiene que ser mayor de 18</small>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control" id="email" placeholder="" formControlName="email">
+                <small  *ngIf="registerGroup.controls.email.errors?.required && registerGroup.controls.email.touched">El email es requerido</small>
+              </div>
+
+              <div class="col-sm-9">
+                <label for="nacionalidad">Nacionalidad</label>
+                <input type="text" class="form-control" id="nacionalidad" placeholder="Ingrese una nacionalidad" formControlName="nacionalidad"  required readonly>
+                <small  *ngIf="registerGroup.controls.nacionalidad.errors?.required && registerGroup.controls.nacionalidad.touched">Debe seleccionar una nacionalidad.</small>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="password" formControlName="password">
+                <small  *ngIf="registerGroup.controls.password.errors?.required && registerGroup.controls.password.touched">La contraseña es requerida</small>
+              </div>
+
+              <div class="col-sm-3">
+                <img *ngIf="bandera" [src]="bandera" alt="">
+              </div>
+
+            </div>
+
+            <hr class="my-4">
+
+            <button class="w-100 btn btn-primary btn-lg" type="submit" [disabled]="!registerGroup.valid">ALTA</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; Alejandro Javier Begue</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Privacy</a></li>
+        <li class="list-inline-item"><a href="#">Terms</a></li>
+        <li class="list-inline-item"><a href="#">Support</a></li>
+      </ul>
+    </footer>
+  </div>

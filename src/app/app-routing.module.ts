@@ -6,6 +6,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { BienvenidaComponent } from './componentes/bienvenida/bienvenida.component';
 import { DetalleRepartidorComponent } from './componentes/detalle-repartidor/detalle-repartidor.component';
 import { LoginComponent } from './componentes/login/login.component';
+import { RegisterComponent } from './componentes/register/register.component';
+import { RegisterGuardGuard } from './guards/register-guard.guard';
 
 const routes: Routes = [
   {
@@ -17,6 +19,11 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
     canActivate : [ActivarInicioGuard]
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    canDeactivate : [RegisterGuardGuard]
   },
   {
     path: 'detalle',

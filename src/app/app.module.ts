@@ -21,6 +21,7 @@ import { TransformBooleanPipe } from './pipes/transform-boolean.pipe';
 import { DetalleRepartidorComponent } from './componentes/detalle-repartidor/detalle-repartidor.component';
 import { AltaRepartidorPizzaRoutingModule } from './modules/alta-repartidor-pizza/alta-repartidor-pizza-routing.module';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
+import { RegisterComponent } from './componentes/register/register.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { NavbarComponent } from './componentes/navbar/navbar.component';
     DetalleComponent,
     DetalleRepartidorComponent,
     NavbarComponent,
-    TransformBooleanPipe
+    TransformBooleanPipe,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,21 +1,17 @@
 export class Usuario {
-    nombre: string = '';
-    apellido: string = '';
-    alias : string = '';
-    edad: number = 0;
-    sexo:string = '';
-    nacionalidad: string = '';
-    pais:{} = {};
-    tipo:string;
+    dni : number = 0;
+    nombre : string = '';
+    edad : number = 0;
+    email : string = '';
+    nacionalidad : {} = {};
+    password : string = '';
 
-    constructor(name:string, surname:string, username:string, age:number, sex:string, nationality:string, country:{}, tipo:string){
+    constructor(id:number, name: string, age:number, email:string, nationality:{}, password:string){
+        this.dni = id;
         this.nombre = name;
-        this.apellido = surname;
-        this.alias = username
         this.edad = age;
-        this.sexo = sex;
+        this.email = email;
         this.nacionalidad = nationality;
-        this.pais = country;
-        this.tipo = tipo;
+        this.password = password;
     }
 }
