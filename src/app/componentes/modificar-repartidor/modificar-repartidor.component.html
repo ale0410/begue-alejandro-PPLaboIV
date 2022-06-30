@@ -1,0 +1,49 @@
+<div class="container" >
+    <main>
+      <div class="py-5">
+        <img class="d-block mx-auto mb-1" src="../../../assets/modificar-pizza.jpg" alt="" width="72" height="57">
+      </div>
+  
+      <div>
+  
+        <div>
+          <form class="needs-validation" [formGroup]="modificarPizzaGroup" (submit)="modificarPizza()">
+            <div class="row g-3">
+              <div class="">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" placeholder="" formControlName="nombre" [ngModel]="inputPizza?.nombre" readonly>
+                <!-- <small *ngIf="modificarPizzaGroup.controls.nombre.errors?.required && modificarPizzaGroup.controls.nombre.touched">El nombre es requerido.</small> -->
+              </div>
+  
+              <div>
+                <label for="ingredientes" class="form-label">Ingredientes</label>
+                <textarea type="text" class="form-control" id="ingredientes" cols="30" rows="3" placeholder="Ingredientes separados por comas." formControlName="ingredientes" [ngModel]="inputPizza?.ingredientes"></textarea>
+                <small  *ngIf="modificarPizzaGroup.controls.ingredientes.errors?.required && modificarPizzaGroup.controls.ingredientes.touched">Los ingredientes son requeridos.</small>
+              </div>
+  
+              <div class="col-sm-6">
+                <label for="precio" class="form-label">Precio</label>
+                <input type="number" class="form-control" id="precio" placeholder="" formControlName="precio" [ngModel]="inputPizza?.precio">
+                <small  *ngIf="modificarPizzaGroup.controls.precio.errors?.required && modificarPizzaGroup.controls.precio.touched">Poner precio.</small>
+                <small  *ngIf="modificarPizzaGroup.controls.precio.errors?.min && modificarPizzaGroup.controls.precio.touched">Debe ser mayor a 500</small>
+              </div>
+  
+              <div class="col-sm-6">
+                <label for="peso" class="form-label">Peso</label>
+                <input type="number" class="form-control" id="peso" placeholder="Gramos" formControlName="peso" [ngModel]="inputPizza?.peso">
+                <small  *ngIf="modificarPizzaGroup.controls.peso.errors?.required && modificarPizzaGroup.controls.peso.touched">La capacidad es requerida</small>
+                <small  *ngIf="modificarPizzaGroup.controls.peso.errors?.min && modificarPizzaGroup.controls.peso.touched">Mayor a 500</small>
+                <small  *ngIf="modificarPizzaGroup.controls.peso.errors?.max && modificarPizzaGroup.controls.peso.touched">Menor a 1000</small>
+              </div>
+  
+  
+            </div>
+  
+            <hr class="my-4">
+  
+            <button class="w-100 btn btn-primary btn-lg" type="submit" [disabled]="!modificarPizzaGroup.valid">MODIFICAR</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>

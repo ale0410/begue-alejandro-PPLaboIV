@@ -1,0 +1,33 @@
+<ul class="list-group" *ngIf="inputPaises">
+    <li class="list-group-item list-group-item-primary d-flex"><b>{{inputPaises.nacionalidad.translations.spa.common}}</b> <span><img [src]="inputPaises.nacionalidad.flags.png" alt=""></span></li>
+    <li class="list-group-item ">
+      <div class="row">
+        <div class="col-sm-3">
+          <p class="mb-0">Capital:</p>
+        </div>
+        <div class="col-sm-9">
+          <p class="text-muted mb-0">{{inputPaises.nacionalidad.capital}}</p>
+        </div>
+      </div>
+    </li>
+    <li class="list-group-item ">
+      <div class="row">
+        <div class="col-sm-3">
+          <p class="mb-0">Continente:</p>
+        </div>
+        <div class="col-sm-9">
+          <p class="text-muted mb-0">{{inputPaises.nacionalidad.continents[0]}}</p>
+        </div>
+      </div>
+    </li>
+    <li class="list-group-item ">
+      <div class="row">
+        <div class="col-sm-3">
+          <p class="mb-0">Cantidad de población:</p>
+        </div>
+        <div class="col-sm-9">
+          <p class="text-muted mb-0">{{inputPaises.nacionalidad.population}}</p>
+        </div>
+      </div>
+    </li>
+</ul>

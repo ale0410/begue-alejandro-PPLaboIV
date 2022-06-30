@@ -1,0 +1,17 @@
+<h1 class="display-5 fw-bold">Listado productos</h1>
+<table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        <th scope="col">DNI</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Detalle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let repartidor of listadoRepartidor" >
+        <td>{{repartidor.dni}}</td>
+        <td>{{repartidor.nombre}}</td>
+        <td><button type="button" class="btn btn-outline-secondary" (click)="getRepartidorSeleccionado(repartidor)">VER DETALLE</button></td>
+      </tr>
+    </tbody>
+  </table>

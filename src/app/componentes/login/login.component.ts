@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Usuario } from 'src/app/clases/usuario'; 
-import { FirestoreService } from 'src/app/servicios/firestore.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/servicios/auth.service';
+
 
 @Component({
   selector: 'app-login',
@@ -10,59 +11,52 @@ import { FirestoreService } from 'src/app/servicios/firestore.service';
 })
 export class LoginComponent implements OnInit {
 
-  nacionalidad : {} | any;
-  bandera : string = '';
-  
+  listadoUsuarios : [] | any;
 
-  formGroup :  FormGroup | any;
+  loginGroup : FormGroup | any;
 
-  constructor(private fb : FormBuilder, public db : FirestoreService) { 
-    this.formGroup = this.fb.group({
-      'usuario' : ['',[Validators.required, this.spacesValidator]],
-      'contraseña': ['',[Validators.required, Validators.minLength(4)]],
-      'edad' :['',[Validators.required, Validators.min(12), Validators.max(99)]],
-      'sexo' : ['',[Validators.required]],
-      'nacionalidad' : ['',[Validators.required]],
-      'bandera' : ''
-    });
+  constructor(private fb : FormBuilder, private route: Router, private auth: AuthService) {
+
+    this.loginGroup = fb.group({
+      'email' : '',
+      'password' : ''
+    })
+
+    this.listadoUsuarios = [
+      {email: 'rosasanchez@gmail.com', password: '123456ad', perfil:'admin'},
+      {email: 'juanperez@gmail.com', password: 'lalalaemp', perfil:'empleado'}
+    ];
   }
 
-  ngOnInit(): void {}
-
-  obtenerNacionalidadActor(paisSeleeccionado : any){
-    this.nacionalidad = paisSeleeccionado;
-    this.formGroup.controls.nacionalidad.setValue(paisSeleeccionado.translations.spa.common); 
-    this.bandera = this.nacionalidad.flags.png; 
-
+  ngOnInit(): void {
   }
 
-  async altaActor(){
-    let usuario : Usuario = this.formGroup.value;
+  cargarEmpleado(){
+      this.loginGroup.controls.email.setValue(this.listadoUsuarios[1].email);
+      this.loginGroup.controls.password.setValue(this.listadoUsuarios[1].password);
+  }
 
-    // //Seteo de campos:
-    // actor.nombre = this.formGroup.value.nombre;
-    // actor.apellido = this.formGroup.value.apellido;
-    // actor.alias = this.formGroup.value.alias;
-    // actor.edad = this.formGroup.value.edad;
-    // actor.sexo = this.formGroup.value.sexo;
-    usuario.nacionalidad = this.nacionalidad;
-    
-    let res = await this.db.alta(usuario,'Actor');
-    
-    if(res){
-      this.formGroup.reset();
+  cargarAdmin(){
+    this.loginGroup.controls.email.setValue(this.listadoUsuarios[0].email);
+    this.loginGroup.controls.password.setValue(this.listadoUsuarios[0].password);
+  }
+
+  login(){
+    if(this.loginGroup.value.email === 'rosasanchez@gmail.com' && this.loginGroup.value.password === '123456ad')
+    {
+      this.auth.setCurrentUser({perfil: 'admin', isLogged:true});
+      this.route.navigate(['altaRepartidor']);
+    }
+    else if (this.loginGroup.value.password === 'juanperez@gmail.com' || this.loginGroup.value.password === 'lalalaemp'){
+      this.auth.setCurrentUser({perfil: 'empleado', isLogged:true})
+      this.route.navigate(['altaRepartidor']);
+    }
+    else{
+      alert('No es un usuario válido');
     }
 
   }
 
-   // CUSTOM VALIDATOR
-   private spacesValidator(control: AbstractControl): null | object {
-    const nombre = <string>control.value;
-    const spaces = nombre.includes(' ');
-
-    return spaces
-      ? { containsSpaces: true }
-      : null; 
-  }
+  
 
 }

@@ -1,0 +1,11 @@
+img{
+    width: 80%;
+  }
+  
+  .navbar-brand{
+    width: 5%;
+  }
+  
+  .active{
+    color: #fdfd5b !important;
+  }

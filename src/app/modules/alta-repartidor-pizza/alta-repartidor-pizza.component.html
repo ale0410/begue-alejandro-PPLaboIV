@@ -1,0 +1,90 @@
+<div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="../../../assets/repartidor-pizzas.jpg" alt="" width="72" height="57">
+        <h2>Alta Repartidor</h2>
+        <!-- <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p> -->
+      </div>
+
+      <div class="row g-5">
+
+        <div class="col-md-5 col-lg-4 order-md-last">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-primary">Lista paises</span>
+              </h4>
+              <div>
+                  <app-paises-listado (paisSeleccionado)="obtenerNacionalidadRepartidor($event)"></app-paises-listado>
+              </div>
+        </div>
+
+        <div class="col-md-7 col-lg-8">
+          <h4 class="mb-3">Ingreso del repartidot</h4>
+          <form class="needs-validation" [formGroup]="repartidorGroup" (submit)="altaRepartidor()" novalidate>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label for="dni" class="form-label">DNI</label>
+                <input type="number" class="form-control" id="dni" placeholder="" formControlName="dni">
+                <small  *ngIf="repartidorGroup.controls.dni.errors?.required && repartidorGroup.controls.dni.touched">El DNI es requerido</small>
+                <small  *ngIf="repartidorGroup.controls.dni.errors?.max && repartidorGroup.controls.dni.touched">El DNI no puede ser mayor a 50 millones.</small>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" placeholder="" formControlName="nombre">
+                <small  *ngIf="repartidorGroup.controls.nombre.errors?.required && repartidorGroup.controls.nombre.touched">El nombre es requerido</small>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="edad" class="form-label">Edad</label>
+                <input type="number" class="form-control" id="edad" placeholder="" formControlName="edad">
+                <small  *ngIf="repartidorGroup.controls.edad.errors?.required && repartidorGroup.controls.edad.touched">La edad es requerida</small>
+                <small  *ngIf="repartidorGroup.controls.edad.errors?.min && repartidorGroup.controls.edad.touched">Tiene que ser mayor de 18</small>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="capacidadTransporte" class="form-label">Capacidad de transporte</label>
+                <input type="number" class="form-control" id="capacidadTransporte" placeholder="" formControlName="capacidadTransporte">
+                <small  *ngIf="repartidorGroup.controls.capacidadTransporte.errors?.required && repartidorGroup.controls.capacidadTransporte.touched">La capacidad es requerida</small>
+                <small  *ngIf="repartidorGroup.controls.capacidadTransporte.errors?.min && repartidorGroup.controls.capacidadTransporte.touched">La capacidad no puede ser menor a 1</small>
+              </div>
+
+              <div class="col-sm-9">
+                <label for="nacionalidad">Nacionalidad</label>
+                <input type="text" class="form-control" id="nacionalidad" placeholder="Ingrese una nacionalidad" formControlName="nacionalidad"  required readonly>
+                <small  *ngIf="repartidorGroup.controls.nacionalidad.errors?.required && repartidorGroup.controls.nacionalidad.touched">Debe seleccionar una nacionalidad.</small>
+              </div>
+
+              <div class="col-sm-3">
+                <img *ngIf="bandera" [src]="bandera" alt="">
+              </div>
+
+
+              <div class="col-md-12">
+                <label for="unidadPropia" class="form-label">Unidad propia</label>
+                <select class="form-select" id="unidadPropia" formControlName="unidadPropia">
+                  <option value="" disabled>Choose...</option>
+                  <option value="true">Si</option>
+                  <option value="false">No</option>
+                </select>
+                <small  *ngIf="repartidorGroup.controls.unidadPropia.errors?.required && repartidorGroup.controls.unidadPropia.touched">La unidad es requerida.</small>
+              </div>
+
+            </div>
+
+            <hr class="my-4">
+
+            <button class="w-100 btn btn-primary btn-lg" type="submit" [disabled]="!repartidorGroup.valid">ALTA</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; Alejandro Javier Begue</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Privacy</a></li>
+        <li class="list-inline-item"><a href="#">Terms</a></li>
+        <li class="list-inline-item"><a href="#">Support</a></li>
+      </ul>
+    </footer>
+  </div>

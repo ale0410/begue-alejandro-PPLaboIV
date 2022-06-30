@@ -1,0 +1,9 @@
+<h2>Detalle repartidor</h2>
+<!-- <div class="card" style="width: 18rem;" *ngIf="inputRepartidor"> -->
+    <div class="card-body" *ngIf="inputRepartidor">
+      <h4 class="card-title"><b>{{inputRepartidor.nombre}}</b></h4>
+      <h6 class="card-subtitle mb-4 text-muted"><span>DNI: </span>{{inputRepartidor.dni}}</h6>
+      <p class="card-text"><span>Edad: </span>{{inputRepartidor.edad}}</p>
+      <p class="card-text"><span>Transporte: </span>{{inputRepartidor.capacidadTransporte}}</p>
+      <p class="card-text"><span>Unidad propia: </span><b>{{inputRepartidor.unidadPropia | transformBoolean}}</b></p>
+    </div>

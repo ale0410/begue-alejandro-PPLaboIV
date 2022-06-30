@@ -1,0 +1,24 @@
+<!-- <div class="container" *ngIf="estaLoggeado"> -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-5"  *ngIf="estaLoggeado">
+        <a class="navbar-brand" [routerLink]="['']"><img src="../../../assets/caja-de-pizza.jpg" alt="PizzaHOME"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['altaRepartidorPizza']" routerLinkActive="active">Alta repartidor</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['detalle']" routerLinkActive="active">Detalle repartidor</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['pizzas']" routerLinkActive="active" *ngIf="perfil == 'admin'">Pizzas</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <button class="btn btn-primary" (click)="logOut()"><i class="bi bi-box-arrow-left"></i> Sign Out</button>
+          </div>
+        </nav>
+      <!-- </div> -->

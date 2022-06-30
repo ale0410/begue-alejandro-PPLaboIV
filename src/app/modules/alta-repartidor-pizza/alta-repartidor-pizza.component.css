@@ -1,0 +1,13 @@
+.container {
+    max-width: 960px;
+  }
+
+  img{
+    height: 6rem;
+    width: 7rem;
+    margin-left: 2rem;
+  }
+
+  small{
+    color: red;
+  }

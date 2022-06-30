@@ -1,1 +1,14 @@
-<p>paises-listado works!</p>
+<div class="container">
+
+    <div class="col listaPaises">
+        <ul class="list-group mb-3" *ngFor="let pais of paises">
+            <li class="list-group-item d-flex justify-content-between lh-condensed paisContainer" (click)="getPaisSeleccionado(pais)">
+                <div>
+                    <h6 class="my-0">{{pais.translations?.spa.common}}</h6>
+                    <small class="text-muted">{{pais.capital}}</small>
+                </div>
+                <span class="text-muted"><img class="float-right" [src]="[pais.flags.png]" alt="" width="84px" height="56px" ></span>
+            </li>
+        </ul>
+    </div>
+</div>

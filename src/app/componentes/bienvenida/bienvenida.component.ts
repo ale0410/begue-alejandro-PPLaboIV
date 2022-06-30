@@ -1,6 +1,5 @@
-import { FirestoreService } from 'src/app/servicios/firestore.service';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Usuario } from 'src/app/clases/usuario';
+import { Component, OnInit } from '@angular/core';
+import { HttpService } from './../../servicios/http.service';
 
 @Component({
   selector: 'app-bienvenida',
@@ -9,24 +8,14 @@ import { Usuario } from 'src/app/clases/usuario';
 })
 export class BienvenidaComponent implements OnInit {
 
-  usuarios : Usuario[] = [];
-  @Input() inputPantalla : boolean = false;
-  @Output() usuarioSeleccionado : EventEmitter<any>= new EventEmitter<any>();
-  
+  datosGit : any;
 
-  constructor(public srv: FirestoreService) { }
+  constructor(private http: HttpService) { }
 
   ngOnInit(): void {
-     this.srv.getCollection('Actor').then( (ref:any) => ref.subscribe((listadoRef:any) => {
-       listadoRef.forEach((element : any) => {
-         this.usuarios.push(element.payload.doc.data());
-       });
-    }));
-  }
-
-  getUsuarioSeleccionado(detalleUsuario: Usuario, accionSeleccionada:string){
-    this.usuarioSeleccionado.emit({usuario: detalleUsuario, accion: accionSeleccionada});
-
+    this.http.getDatosGit().subscribe((listaDatos:any) =>{
+      this.datosGit = listaDatos;
+    });
   }
 
 }

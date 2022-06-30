@@ -1,0 +1,32 @@
+<div class="container">
+    <main>
+      <div class="py-5">
+        <img class="d-block mx-auto mb-1" src="../../../assets/eliminar-pizza.jpg" alt="" width="72" height="57">
+      </div>
+  
+      <div>
+  
+        <div>
+          <form class="needs-validation" [formGroup]="deletePizzaGroup" (submit)="deletePizza()">
+            <div class="row g-3">
+              <div class="">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" placeholder="Pizza a borrar..." formControlName="nombre" [ngModel]="inputPizza?.nombre" readonly>
+              </div>
+  
+              <div class="form-group form-check mt-3">
+                <input type="checkbox" class="form-check-input" id="ckeck" formControlName="check">
+                <label class="form-check-label" for="ckeck">¿Estás seguro de borrarla?</label>
+  
+             </div>
+  
+            </div>
+  
+            <hr class="my-4">
+  
+            <button class="w-100 btn btn-outline-danger btn-lg" type="submit" [disabled] ="!deletePizzaGroup.valid">BORRAR</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
