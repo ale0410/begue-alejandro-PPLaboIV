@@ -45,11 +45,11 @@ export class LoginComponent implements OnInit {
     if(this.loginGroup.value.email === 'rosasanchez@gmail.com' && this.loginGroup.value.password === '123456ad')
     {
       this.auth.setCurrentUser({perfil: 'admin', isLogged:true});
-      this.route.navigate(['altaRepartidor']);
+      this.route.navigate(['altaRepartidorPizza']);
     }
     else if (this.loginGroup.value.password === 'juanperez@gmail.com' || this.loginGroup.value.password === 'lalalaemp'){
       this.auth.setCurrentUser({perfil: 'empleado', isLogged:true})
-      this.route.navigate(['altaRepartidor']);
+      this.route.navigate(['altaRepartidorPizza']);
     }
     else{
       alert('No es un usuario válido');
